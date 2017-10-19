@@ -19,7 +19,7 @@ import matplotlib.pyplot as plt
 set_sizes = [100,500,1000,5000,10000,50000,100000,500000,1000000,5000000,10000000,50000000,100000000]
 column_names = ["Instance","Feature 1","Feature 2", "Feature 3","Feature 4","Feature 5","Feature 6","Feature 7",
                 "Feature 8","Feature 9","Feature 10","Target","Target Class"]
-dataframe = pandas.read_csv("C:\\Users\\bboyd\\Documents\\college - 4th year\\Machine Learning\\machine_learning_group_project\\team_13\\datasets\\sum_without_noise.csv",
+dataframe = pandas.read_csv("C:\Users\bboyd\Documents\college - 4th year\Machine Learning\machine_learning_group_project\team_13\datasets\sum_without_noise.csv",
                              sep=';',header=0,names=column_names,index_col=0,usecols=[0,1,2,3,4,6,7,8,9,10,11],
                              nrows = 100)
 data = np.array(dataframe.as_matrix())
