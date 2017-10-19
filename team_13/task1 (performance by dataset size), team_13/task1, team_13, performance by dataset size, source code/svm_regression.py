@@ -15,10 +15,11 @@ import matplotlib.pyplot as plt
 """Read in dataset"""
 set_sizes = [100,500,1000,5000,10000,50000,100000,500000,1000000,5000000,10000000,50000000,100000000]
 column_names = ["Instance","Feature 1","Feature 2", "Feature 3","Feature 4","Feature 5","Feature 6","Feature 7",
-                "Feature 8","Feature 9","Feature 10","Target","Target Class"]
+                "Feature 8","Feature 9","Feature 10","Target","TargetClass"]
 dataframe = pandas.read_csv("C:\\Users\\gordo\\Desktop\\ML\\datasets\\without-noise\\The-SUM-dataset-without-noise.csv",
                              sep=';',header=0,names=column_names,index_col=0,usecols=[0,1,2,3,4,6,7,8,9,10,11],
                              nrows =set_sizes[2])
+
 
 X_train = dataframe.head(700)
 Y_train = X_train.Target
@@ -37,8 +38,9 @@ for m in Y_test:
     i = i+1
 
 
+
 print("Creating model")
-svr_poly = SVR(kernel='linear', C=1e3)
+svr_poly = SVR(kernel='rbf', C=1e3,  gamma=0.3)
 print("Beginning to fit model ...")
 pred_test = svr_poly.fit(X_train,Y_train).predict(X_test)
 for i in range (0,300):
@@ -47,4 +49,5 @@ test_se = mean_squared_error(Y_test, pred_test)
 
 print("Model Fit")
 print(test_se)
+
 
