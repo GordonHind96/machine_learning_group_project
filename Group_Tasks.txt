@@ -7,8 +7,8 @@ KNN: Gordon
 DataSets:
 Sum with Noise
 Sum without Noise
-???
-???
+Netflix Moview Rating
+House Prices
 
 
 Task 2:
@@ -22,8 +22,8 @@ KNN
 logistic regression
 
 Datasets
-???
-???
+Netflix Movie Rating
+House Prices
 
 I'm also going to add all the template files from Joreans drop box in to the repo
 
