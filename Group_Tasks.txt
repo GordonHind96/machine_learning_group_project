@@ -7,7 +7,7 @@ SVM: Gordon
 DataSets:
 Sum with Noise
 Sum without Noise
-Netflix Moview Rating
+Skin Not Skin
 House Prices
 
 
@@ -22,7 +22,7 @@ KNN
 logistic regression
 
 Datasets
-Netflix Movie Rating
+Skin Not Skin
 House Prices
 
 I'm also going to add all the template files from Joreans drop box in to the repo
