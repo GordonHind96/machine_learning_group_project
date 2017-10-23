@@ -3,12 +3,12 @@ Algorithms
 Linear Regression: Aodan
 Logistic Regression: Brian
 SVM Regression: Gordon
-KNN: Gordon
+SVM: Gordon
 DataSets:
 Sum with Noise
 Sum without Noise
-???
-???
+Skin Not Skin
+House Prices
 
 
 Task 2:
@@ -22,8 +22,8 @@ KNN
 logistic regression
 
 Datasets
-???
-???
+Skin Not Skin
+House Prices
 
 I'm also going to add all the template files from Joreans drop box in to the repo
 
