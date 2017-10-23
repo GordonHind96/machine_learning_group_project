@@ -23,7 +23,7 @@ nrows2 = set_sizes[10]
 column_names = ["Instance","Feature 1","Feature 2", "Feature 3","Feature 4","Feature 5","Feature 6","Feature 7",
 
                 "Feature 8","Feature 9","Feature 10","Target","TargetClass"]
-dataframe = pandas.read_csv("C:\\Users\\bboyd\\Documents\\college - 4th year\\Machine Learning\\machine_learning_group_project\\team_13\\datasets\\sum_without_noise.csv",
+dataframe = pandas.read_csv("C:\\Users\\bboyd\\Documents\\college - 4th year\\Machine Learning\\machine_learning_group_project\\team_13\\datasets\\sum_with_noise.csv",
                              sep=';',header=0,names=column_names,index_col=0,usecols=[0,1,2,3,4,6,7,8,9,10,12],
                              nrows = nrows2)
 
@@ -34,7 +34,7 @@ X_train = dataframe.head(int(nrows2 * .7))
 Y_train = X_train.TargetClass
 X_train = X_train[["Feature 1","Feature 2", "Feature 3","Feature 4","Feature 6","Feature 7", "Feature 8","Feature 9","Feature 10"]]
 
-X_test = dataframe.tail(int(nrows2 * .7))
+X_test = dataframe.tail(int(nrows2 * .3))
 Y_test = X_test.TargetClass
 X_test = X_test[["Feature 1","Feature 2", "Feature 3","Feature 4","Feature 6","Feature 7", "Feature 8","Feature 9","Feature 10"]]
 
