@@ -18,7 +18,7 @@ set_sizes = [100,500,1000,5000,10000,50000,100000,500000,1000000,5000000,1000000
 nrows2 = set_sizes[0]
 column_names = ["Instance","Feature 1","Feature 2", "Feature 3","Feature 4","Feature 5","Feature 6","Feature 7",
                 "Feature 8","Feature 9","Feature 10","Target","TargetClass"]
-dataframe = pandas.read_csv("C:\\Users\\gordo\\Desktop\\ML\\datasets\\without-noise\\The-SUM-dataset-without-noise.csv",
+dataframe = pandas.read_csv("C:\\Users\\gordo\\Desktop\\ML\\datasets\\with-noise\\The-SUM-dataset-with-noise.csv",
                              sep=';',header=0,names=column_names,index_col=0,usecols=[0,1,2,3,4,5,6,7,8,9,10,11],
                              nrows =set_sizes[5])
 
