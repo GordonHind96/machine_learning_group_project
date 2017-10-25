@@ -18,7 +18,7 @@ Tensorflow:Gordon
 
 Algoritms:
 linear regression
-KNN
+SVM
 logistic regression
 
 Datasets
