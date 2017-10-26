@@ -15,18 +15,18 @@ set_sizes = [100,500,1000,5000,10000,50000,100000,500000,1000000,5000000,1000000
 column_names = ["id","vendor_id","pickup_datetime","dropoff_datetime","passenger_count","pickup_longitude","pickup_latitude"
 				,"dropoff_longitude","dropoff_latitude","store_and_fwd_flag","trip_duration"]
 """Read in dataset"""
-for i in range(0,7):
-	dataframe = pandas.read_csv("train.csv",
-                             sep=',',header=0,names=column_names,index_col=0,usecols=[0,1,2,3,4,5,6,7,8,10] ,nrows =set_sizes[i])
+i=10
+dataframe = pandas.read_csv("train.csv",
+sep=',',header=0,names=column_names,index_col=0,usecols=[0,1,2,3,4,5,6,7,8,10] ,nrows =set_sizes[i])
 
-	Y = dataframe["trip_duration"]
-	X = dataframe[["vendor_id","passenger_count","pickup_longitude","pickup_latitude","dropoff_longitude","dropoff_latitude"]]
+Y = dataframe["trip_duration"]
+X = dataframe[["vendor_id","passenger_count","pickup_longitude","pickup_latitude","dropoff_longitude","dropoff_latitude"]]
 
-	X_train = X.head(int(set_sizes[i]*0.7))
-	X_test = X.tail(int(set_sizes[i]*0.3))
+X_train = X.head(int(set_sizes[i]*0.7))
+X_test = X.tail(int(set_sizes[i]*0.3))
 
-	Y_train = Y.head(int(set_sizes[i]*0.7))
-	Y_test = Y.tail(int(set_sizes[i]*0.3))
+Y_train = Y.head(int(set_sizes[i]*0.7))
+Y_test = Y.tail(int(set_sizes[i]*0.3))
 
 regr = linear_model.LinearRegression()
 
