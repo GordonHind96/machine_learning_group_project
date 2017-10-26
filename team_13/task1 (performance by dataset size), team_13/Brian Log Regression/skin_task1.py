@@ -8,12 +8,14 @@ files = "C:\\Users\\bboyd\\Documents\\college - 4th year\\Machine Learning\\mach
 set_sizes = [100,500,1000,5000,10000,50000,100000,500000,1000000,5000000,10000000,50000000,100000000]
 column_names = ["Feature 1","Feature 2", "Feature 3","Target"]
 
-nrows2 = set_sizes[9]
+nrows2 = set_sizes[1]
 dataframe = pd.read_csv(files,
                              sep=',',header=0,names=column_names,usecols=[0,1,2,3],
                              nrows =nrows2)
 
 
+from sklearn.utils import shuffle
+dataframe = shuffle(dataframe)
 
 X_train = dataframe.head(int(nrows2 * .7))
 Y_train = X_train.Target
