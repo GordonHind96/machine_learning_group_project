@@ -15,7 +15,7 @@ import matplotlib.pyplot as plt
 """Read in dataset"""
 
 set_sizes = [100,500,1000,5000,10000,50000,100000,500000,1000000,5000000,10000000,50000000,100000000]
-nrows2 = set_sizes[0]
+nrows2 = set_sizes[5]
 column_names = ["Instance","Feature 1","Feature 2", "Feature 3","Feature 4","Feature 5","Feature 6","Feature 7",
                 "Feature 8","Feature 9","Feature 10","Target","TargetClass"]
 dataframe = pandas.read_csv("C:\\Users\\gordo\\Desktop\\ML\\datasets\\with-noise\\The-SUM-dataset-with-noise.csv",
@@ -31,7 +31,7 @@ Y_test = X_test.Target
 X_test = X_test[["Feature 1", "Feature 2","Feature 3","Feature 4","Feature 5","Feature 6","Feature 7",
                 "Feature 8","Feature 9", "Feature 10"]]
 
-svr = SVR(C=500000,verbose=True).fit(X_train,Y_train)
+svr = SVR(C=500000).fit(X_train,Y_train)
 pred_test = svr.predict(X_test)
 score = r2_score(Y_test,pred_test)
 cv_score = cross_val_predict(svr, X_train, Y_train, cv=10)

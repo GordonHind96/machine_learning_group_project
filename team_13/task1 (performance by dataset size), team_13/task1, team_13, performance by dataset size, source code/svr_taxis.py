@@ -33,8 +33,8 @@ for i in range(0,7):
 
 # Set up possible values of parameters to optimize over
 	svr = SVR()
-	svr.fit(x_train.values.reshape(len(x_train), 8),y_train)
-	pred = svr.predict(x_test.values.reshape(len(x_test),8))
+	svr.fit(x_train.values.reshape(len(x_train), 6),y_train)
+	pred = svr.predict(x_test.values.reshape(len(x_test),6))
 	print(set_sizes[i])
 	print("Mean Squared Error: %f" % (mean_squared_error(y_test,pred)))
 	print("R2 Score: %f" % (r2_score(y_test,pred)))
