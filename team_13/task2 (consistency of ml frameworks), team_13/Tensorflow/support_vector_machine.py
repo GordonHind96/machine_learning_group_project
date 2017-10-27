@@ -8,25 +8,26 @@ ops.reset_default_graph()
 #create graph
 sesh = tf.Session()
 
-set_sizes = [100,500,1000,5000,10000,50000,100000,500000,1000000,5000000,10000000,50000000,100000000]
-column_names = ["Feature 1","Feature 2", "Feature 3","Target"]
 
-i = set_sizes[8]
+column_names = ["Feature 1","Feature 2", "Feature 3","Target"]
+n_samples = 100000
+
 dataframe = pd.read_csv("C:\\Users\\gordo\\Desktop\\ML\\machine_learning_group_project\\team_13\\datasets\\skin.csv",
                              sep=',',header=0,names=column_names,usecols=[0,1,2,3],
-                             nrows =i)
+                             nrows =n_samples)
                              	#nrows = set_sizes[4]
 dataframe = dataframe.sample(frac=1)
-X_train = dataframe.head(int(i * .7)) 
-#X_train.append(dataframe.tail(int(nrows2*.35)))
-Y_train = X_train.Target
-X_train = X_train[["Feature 1","Feature 2","Feature 3"]]
-X_test = dataframe.head(int(i * .3))
-#X_test.append(dataframe.tail(int(nrows2 * .15)))
+Y = dataframe["Target"]
+X = dataframe[["Feature 1","Feature 2","Feature 3"]]
+X = X.get_values()
+#print(X)
 
-Y_test = X_test.Target
-X_test = X_test[["Feature 1", "Feature 2","Feature 3"]]
+X_train = X[:int(n_samples*0.7)]
+X_test = X[int(n_samples*0.7):]
 
+Y_train = Y[:int(n_samples*0.7)]
+Y_test = Y[int(n_samples*0.7):]
+print(Y_train)
 #Declare batch size
 batch_size = 100
 
@@ -39,7 +40,7 @@ A = tf.Variable(tf.random_normal(shape=[3,1]))
 b = tf.Variable(tf.random_normal(shape=[1,1]))
 
 #Declare model operations
-model_output = tf.subtract(tf.matmul(x_data,A),b)
+model_output = tf.subtract(tf.multiply(x_data,A),b)
 
 #Declare vector L2 'norm' function squared
 l2_norm = tf.reduce_sum(tf.square(A))
@@ -69,27 +70,25 @@ sesh.run(init)
 loss_vec = []
 train_accuracy = []
 test_accuarcy = []
-for i in range(500):
-	rand_index = np.random.choice(len(X_train),size=batch_size)
-	rand_x = X_train.iloc(rand_index)
-	rand_y = np.transpose([Y_train.iloc(rand_index)])
-	sesh.run(train_step, feed_dict={x_data: rand_x, y_target:rand_y})
-
-	temp_loss =sesh.run(loss,feed_dict={x_data: rand_x, y_target: rand_y})
+for c in range(100):
+	print(c)
+	for (x,y) in zip(X_train, Y_train):
+		sesh.run(train_step, feed_dict={x_data:x , y_target:y})
+		temp_loss =sesh.run(loss,feed_dict={x_data: x, y_target: y})
 	loss_vec.append(temp_loss)
 	train_acc_temp = sesh.run(accuracy, feed_dict={
-		x_data: X_train,
-		y_target: np.transpose([Y_train])})
+		x_data: np.transpose(X_train),
+		y_target: Y_train})
 	train_accuracy.append(train_acc_temp)
 
 	test_acc_temp = sesh.run(accuracy,feed_dict={
-		x_data: X_test,
-		y_target: np.transpose([Y_test])})
+		x_data: np.transpose(X_test),
+		y_target: Y_test})
 	test_accuarcy.append(test_acc_temp)
 
-	if(i+1) % 100 == 0:
+	if(c+1) % 100 == 0:
 		print('Step #{} A = {}, b = {}'.format(
-			str(i+1),
+			str(c+1),
 			str(sess.run(A)),
 			str(sess.run(b))
 			))
