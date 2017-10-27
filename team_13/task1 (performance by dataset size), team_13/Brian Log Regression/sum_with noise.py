@@ -13,7 +13,7 @@ print('reading in data...')
 """Read in dataset"""
 set_sizes = [100,500,1000,5000,10000,50000,100000,500000,1000000,5000000,10000000,50000000,100000000]
 
-nrows2 = set_sizes[4]
+nrows2 = set_sizes[11]
 
 column_names = ["Instance","Feature 1","Feature 2", "Feature 3","Feature 4","Feature 5","Feature 6","Feature 7",
 

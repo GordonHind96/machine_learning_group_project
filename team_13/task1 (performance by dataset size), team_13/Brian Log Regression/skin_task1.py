@@ -14,6 +14,8 @@ dataframe = pd.read_csv(files,
                              nrows =nrows2)
 
 
+from sklearn.utils import shuffle
+dataframe = shuffle(dataframe)
 
 X_train = dataframe.head(int(nrows2 * .7))
 Y_train = X_train.Target
