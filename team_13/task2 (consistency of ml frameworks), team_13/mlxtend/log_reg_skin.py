@@ -2,9 +2,9 @@
 
 from mlxtend.plotting import plot_decision_regions
 from mlxtend.classifier import LogisticRegression
-
+from sklearn.model_selection import cross_val_predict as cvsc
 import pandas as pd
-import matplotlib.pyplot as plt
+from sklearn import linear_model
 
 
 files = "C:\\Users\\bboyd\\Documents\\college - 4th year\\Machine Learning\\machine_learning_group_project\\team_13\\datasets\\skin.csv"
@@ -28,7 +28,10 @@ print(type(Y))
 Y = Y.get_values()
 
 X_train = X[:int(set_sizes[nrows]*0.7) ]
-X_test = X[int(set_sizes[nrows]*0.3) : ]
+X_test = X[int(set_sizes[nrows]*0.7) : ]
+print("X" , X.size)
+print("x_train", X_train.size)
+print("xtest", X_test.size)
 
 len = Y.size;
 train_len = (int) ((len*.7))
@@ -38,21 +41,12 @@ test_len = (int) (len - train_len)
 
 Y_test = Y[ train_len : ]
 
+print("Y" , Y.size)
+print("y_train", Y_train.size)
+print("y test", Y_test.size)
 
-'''
-X_train = dataframe.head(int(data_size * .7))
-Y_train = X_train.Target
-X_train = X_train[["Feature 1","Feature 2","Feature 3"]]
-
-print(Y_train)
-
-X_test = dataframe.tail(int(data_size * .3))
-Y_test = X_test.Target
-X_test = X_test[["Feature 1", "Feature 2","Feature 3"]]
-
-
-print(type(Y))'''
-
+print (Y_test.size)
+print (X_test.size)
 
 lr = LogisticRegression(eta=0.1,
                         l2_lambda=0.0,
@@ -82,6 +76,12 @@ print(pre[0])
 print(Y_test[0])
 
 acc = correct/total
-print("ACC " , acc)
+print("ACC 70-30 split" , acc)
 
-print("score," , lr.score(X_test,Y_test))
+
+logreg = linear_model.LogisticRegression(C=1e5)
+
+logreg.fit(X_train, Y_train)
+
+
+print(cvsc( logreg, X, Y, cv=10))
