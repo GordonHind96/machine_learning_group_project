@@ -85,4 +85,25 @@ logreg = linear_model.LogisticRegression(C=1e5)
 logreg.fit(X_train, Y_train)
 
 
+cv = cvsc( logreg, X, Y, cv=10)
+
+
+correct = 0
+total = 0
+
+i2 = 0
+while(i2 < Y_test.size):
+    if(Y_test[i2] == cv[i2]):
+        correct += 1
+    i2+=1
+    total += 1
+
+print("--------")
+print(pre[0])
+print(Y_test[0])
+
+acc = correct/total
+print("cv split" , acc)
+
+
 print(cvsc( logreg, X, Y, cv=10))
