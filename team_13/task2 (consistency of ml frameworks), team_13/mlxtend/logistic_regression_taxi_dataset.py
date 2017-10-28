@@ -3,7 +3,10 @@ from mlxtend.classifier import LogisticRegression
 
 import pandas
 import numpy as np
-from sklearn import linear_model, datasets, linear_model
+from sklearn import linear_model
+from sklearn.model_selection import cross_val_score as cvsc
+
+
 
 
 set_sizes = [100,500,1000,5000,10000,50000,100000,500000,1000000,5000000,10000000,50000000,100000000]
@@ -75,4 +78,11 @@ print(Y_test[0])
 acc = correct/total
 print("ACC " , acc)
 
-print("score," , lr.score(X_test,Y_test))
+#print("score," , lr.score(X_test,Y_test))
+
+logreg = linear_model.LogisticRegression(C=1e5)
+
+logreg.fit(X_train, Y_train)
+
+
+print(cvsc( logreg, X, Y, cv=10))
