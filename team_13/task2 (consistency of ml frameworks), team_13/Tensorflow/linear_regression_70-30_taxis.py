@@ -9,24 +9,24 @@ learning_rate = 0.01
 training_epochs = 10
 display_steps = 50
 
-set_sizes = [100,500,1000,5000,10000,50000,100000,500000,1000000,5000000,10000000,50000000,100000000]
+
 
 column_names = ["id","vendor_id","pickup_datetime","dropoff_datetime","passenger_count","pickup_longitude","pickup_latitude"
         ,"dropoff_longitude","dropoff_latitude","store_and_fwd_flag","trip_duration"]
 """Read in dataset"""
-i=6
+n_samples = 100000
 dataframe = pd.read_csv(tf.gfile.Open("C:\\Users\\gordo\\Desktop\\ML\\datasets\\train.csv"),
-sep=',',header=0,names=column_names,index_col=0,usecols=[0,1,2,3,4,5,6,7,8,10] ,nrows =set_sizes[i])
+sep=',',header=0,names=column_names,index_col=0,usecols=[0,1,2,3,4,5,6,7,8,10] ,nrows =n_samples)
 
 Y = dataframe["trip_duration"]
 X = dataframe[["passenger_count","pickup_longitude","pickup_latitude","dropoff_longitude","dropoff_latitude"]]
 X = X.get_values()
 #print(X)
-X_train = X[:int(set_sizes[i]*0.7)]
-X_test = X[int(set_sizes[i]*0.7):]
+X_train = X[:int(n_samples*0.7)]
+X_test = X[int(n_samples*0.7):]
 
-Y_train = Y[:int(set_sizes[i]*0.7)]
-Y_test = Y[int(set_sizes[i]*0.7):]
+Y_train = Y[:int(n_samples*0.7)]
+Y_test = Y[n_samples*0.7):]
 
 
 # tf Graph Input
@@ -41,7 +41,7 @@ b = tf.Variable(rng.randn(), name="bias")
 pred = tf.add(tf.multiply(X,W),b)
 
 #Mean Squared Error
-cost = tf.reduce_sum(tf.pow(pred-Y,2))/(2*set_sizes[i])
+cost = tf.reduce_sum(tf.pow(pred-Y,2))/(2*n_samples)
 
 #Gradient Descent
 alpha = tf.train.GradientDescentOptimizer(learning_rate).minimize(cost)
@@ -75,7 +75,7 @@ with tf.Session() as sesh:
   print("Testing Mean Squared Error")
   #print("X_test shape:",X_test.shape())
   testing_cost = sesh.run(
-    tf.reduce_sum(tf.pow(pred - Y,2))/(2 * set_sizes[i]),
+    tf.reduce_sum(tf.pow(pred - Y,2))/(2 * n_samples),
     feed_dict={X: np.transpose(X_test), Y: Y_test}) #cost function as before
 
   print("Testing cost=", testing_cost)
