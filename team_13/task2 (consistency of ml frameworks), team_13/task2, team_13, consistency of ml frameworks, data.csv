@@ -1,9 +1,9 @@
 NY TAXIS;scikit-learn -- accuracy-- 70/30;Tensorflow -- accuracy -- 70/30;mlExtend -- accuracy -- 70/30;scikit-learn -- RMSE -- 70/30;Tensorflow -- $RMSE -- 70/30;mlExtend -- RMSE -- 70/30;scikit-learn -- Accuracy -- 10-fold;Tensorflow -- Accuracy -- 10-fold;mlExtend -- Accuracy -- 10-fold;scikit-learn -- RMSE -- 10-fold;Tensorflow -- RMSE -- 10-fold;mlExtend -- RMSE -- 10-fold
 Linear Regression;n/a;n/a;n/a;0;2343.45;0;n/a;n/a;n/a;0;1940.06;0;
-Logistic Regression;0;0;0;0;0;0;0;0;0;0;0;0;
-Support Vector Machine Vector Machine;0;0;0;0;0;0;0;0;0;0;0;0;
+Logistic Regression;0;n/a;0;0;n/a;0;0;n/a;0;0;n/a;0;
+Support Vector Machine Vector Machine;0;n/a;0;0;n/a;0;0;n/a;0;0;n/a;0;
 ;;;;;;;;;;;;
 SkinNotSkin;scikit-learn -- accuracy-- 70/30;Tensorflow -- accuracy -- 70/30;mlExtend -- accuracy -- 70/30;scikit-learn -- RMSE -- 70/30;Tensorflow -- $RMSE -- 70/30;mlExtend -- RMSE -- 70/30;scikit-learn -- Accuracy -- 10-fold;Tensorflow -- Accuracy -- 10-fold;mlExtend -- Accuracy -- 10-fold;scikit-learn -- RMSE -- 10-fold;Tensorflow -- RMSE -- 10-fold;mlExtend -- RMSE -- 10-fold RMSE -- 70/30;mlExtend -- RMSE -- 70/30;scikit-learn -- Accuracy -- 10-fold;Tensorflow -- Accuracy -- 10-fold;mlExtend -- Accuracy -- 10-fold;scikit-learn -- RMSE-- 10-fold;Tensorflow --RMSE -- 10-fold;mlExtend -- RMSE -- 10-fold
 Linear Regression;0;n/a;0;0;n/a;0;0;n/a;0;0;n/a;0
-Logistic Regression;0;0;0;0;0;0;0;0;0;0;0;0;
-Support Vector Machine Vector Machine;0;0;0;0;0;0;0;0;0;0;0;0;
+Logistic Regression;0;n/a;0;0;n/a;0;0;n/a;0;0;n/a;0;
+Support Vector Machine Vector Machine;0;0.79;0;0;0.82;0;0;n/a;0;0;n/a;0;

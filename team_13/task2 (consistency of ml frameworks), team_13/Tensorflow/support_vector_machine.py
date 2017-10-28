@@ -70,7 +70,7 @@ sesh.run(init)
 loss_vec = []
 train_accuracy = []
 test_accuarcy = []
-for c in range(100):
+for c in range(50):
 	print(c)
 	for (x,y) in zip(X_train, Y_train):
 		sesh.run(train_step, feed_dict={x_data:x , y_target:y})
@@ -93,7 +93,7 @@ for c in range(100):
 			str(sess.run(b))
 			))
 		print('Loss = ' + str(temp_loss))
-
+print(test_accuarcy)
 			
 
 
